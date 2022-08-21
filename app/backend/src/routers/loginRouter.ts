@@ -1,11 +1,12 @@
-import { Router } from 'express';
+import * as express from 'express';
 import LoginController from '../controllers/loginController';
+import LoginService from '../services/loginService';
 
-const loginController = new LoginController();
+const loginService = new LoginService();
+const loginController = new LoginController(loginService);
 
-const router = Router();
+const router = express.Router();
 
 router.post('/', (req, res) => loginController.login(req, res));
-router.get('/validate', (req, res) => loginController.validateLogin(req, res));
 
 export default router;
