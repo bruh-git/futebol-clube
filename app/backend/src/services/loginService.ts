@@ -1,7 +1,7 @@
 import Joi = require('joi');
 import * as bcrypt from 'bcryptjs';
 import User from '../database/models/UserModel';
-import jwtToken from './AuthService';
+import AuthService from './AuthService';
 
 // - Endpoint `POST /users` deve retornar:
 //     - token
@@ -40,7 +40,8 @@ export default class LoginService {
       e.name = 'UnauthorizedError';
       throw e;
     }
-    const token = jwtToken.createToken(user);
+
+    const token = AuthService.createToken({ email, password });
 
     return token;
   };
