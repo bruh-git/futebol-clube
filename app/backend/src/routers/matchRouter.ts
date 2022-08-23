@@ -8,5 +8,6 @@ const matchesService = new MatchesService();
 const matchesController = new MatchesController(matchesService);
 
 router.get('/', (req, res) => matchesController.list(req, res));
+router.get('/?', (req, res) => matchesController.list(req, res));
 
 export default router;
