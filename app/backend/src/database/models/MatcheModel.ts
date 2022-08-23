@@ -35,7 +35,7 @@ Matches.init({
     onDelete: 'CASCADE',
   },
   awayTeamGoals: {
-    type: BOOLEAN,
+    type: INTEGER,
     allowNull: false,
     field: 'away_team_goals',
   },
