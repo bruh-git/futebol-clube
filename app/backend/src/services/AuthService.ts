@@ -5,7 +5,10 @@ const secret = process.env.JWT_SECRET as string;
 
 export default class AuthService {
   static createToken(payload: { email: string, password: string }) {
-    const token = jwt.sign(payload, secret);
+    const token = jwt.sign(payload, secret, {
+      expiresIn: '5d',
+      algorithm: 'HS256',
+    });
     return token;
   }
 
