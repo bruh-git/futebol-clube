@@ -9,8 +9,14 @@ export default class AuthService {
     return token;
   }
 
-  static validateToken(token: string) {
-    const user = jwt.verify(token, secret);
-    return user as { email: string, password: string };
+  static validateToken(token: string): jwt.JwtPayload {
+    try {
+      const verify = jwt.verify(token, secret);
+      return verify as jwt.JwtPayload;
+    } catch (e) {
+      const error = new Error('Expired or invalid token');
+      error.name = 'UnauthorizedError';
+      throw error;
+    }
   }
 }

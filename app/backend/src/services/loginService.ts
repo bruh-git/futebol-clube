@@ -33,7 +33,7 @@ export default class LoginService {
       throw e;
     }
 
-    const validPassword = bcrypt.compareSync(password, user.password);
+    const validPassword = bcrypt.compare(password, user.password);
 
     if (!validPassword) {
       const e = new Error('Incorrect email or password');
@@ -45,4 +45,16 @@ export default class LoginService {
 
     return token;
   };
+
+  static async validateLogin(token: string) {
+    const { email } = AuthService.validateToken(token);
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      const e = new Error('unidentified user');
+      e.name = 'UnauthorizedError';
+      throw e;
+    }
+    return user.role;
+  }
 }

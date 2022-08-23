@@ -11,4 +11,17 @@ export default class LoginController {
 
     return res.status(200).json({ token });
   }
+
+  static async validateLogin(req: Request, res: Response) {
+    const { authorization } = req.headers;
+
+    if (!authorization) {
+      const error = new Error('Token not found');
+      error.name = 'UnauthorizedError';
+      throw error;
+    }
+
+    const role = await LoginService.validateLogin(authorization);
+    return res.status(200).json({ role });
+  }
 }
