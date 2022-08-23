@@ -1,6 +1,3 @@
 jsonwebtoken
-@types/jsonwebtoken
 express-async-errors
 joi
-http-status-codes
-@types/http-status-codes
