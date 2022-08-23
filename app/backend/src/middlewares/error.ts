@@ -12,9 +12,6 @@ const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
     case 'NotFoundError':
       res.status(404).json({ message });
       break;
-    case 'ConflictError':
-      res.status(409).json({ message });
-      break;
     default:
       res.status(500).json({ message });
       break;

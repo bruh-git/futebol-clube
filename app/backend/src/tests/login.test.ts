@@ -29,14 +29,6 @@ describe('/login', () => {
     expect(chaiHttpResponse.status).to.equal(200);
   });
 
-  it('retorne o status 200 em caso de / com sucesso', async () => {
-    const chaiHttpResponse = await chai 
-    .request(app)
-      .get("/");
-      
-    expect(chaiHttpResponse.status).to.equal(200);
-  });
-
   it('retorne o status 401 quando usuário não autorizado', async () => {
 
     sinon.stub(UserModel, 'findOne').resolves();
@@ -83,6 +75,17 @@ describe('/login', () => {
         .send(loginMock)
     
     expect(chaiHttpResponse.body).to.have.property('token');
+  });
+
+  it('retorna 404', async () => {
+    sinon.stub(UserModel, "findOne").callsFake(() => {
+      throw new Error();
+    })
+
+    const response = await chai.request(app)
+      .post('/login/404')
+
+    expect(response.status).to.equal(404)
   });
 
 });

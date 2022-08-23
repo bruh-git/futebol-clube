@@ -19,4 +19,9 @@ const errorLoginMock = {
   password: 'senhaerrada',
 };
 
-export { loginMock, userMock, errorLoginMock };
+const userNotAuthMock = {
+  email: 'teste@teste.com',
+  password: 'senhaerrada',
+};
+
+export { loginMock, userMock, errorLoginMock, userNotAuthMock };
