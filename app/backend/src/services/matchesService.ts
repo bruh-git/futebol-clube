@@ -38,4 +38,14 @@ export default class TeamsService {
       { where: { id } },
     );
   };
+
+  public update = async (id: number, homeTeamGoals: number, awayTeamGoals: number) => {
+    await Matches.update(
+      {
+        homeTeamGoals,
+        awayTeamGoals,
+      },
+      { where: { id } },
+    );
+  };
 }
