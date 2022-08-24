@@ -1,5 +1,7 @@
+import Teams from '../database/models/TeamModel';
 import IUser from '../interfaces/IUser';
 import ILogin from '../interfaces/ILogin';
+import IMatch from '../interfaces/IMatch';
 
 const loginMock: ILogin = {
   email: 'admin@admin.com',
@@ -24,4 +26,28 @@ const userNotAuthMock = {
   password: 'senhaerrada',
 };
 
-export { loginMock, userMock, errorLoginMock, userNotAuthMock };
+const matchesMock = [
+  {
+    id: 0,
+    homeTeam: 0,
+    homeTeamGoals: 3,
+    awayTeam: 1,
+    awayTeamGoals: 2,
+    inProgress: false,
+  },
+  {
+    id: 1,
+    homeTeam: 1,
+    homeTeamGoals: 7,
+    awayTeam: 2,
+    awayTeamGoals: 1,
+    inProgress: false,
+  },
+] as IMatch[];
+
+const teamsMock = ([
+  { id: 0, teamName: 'Cruzeiro' },
+  { id: 1, teamName: 'Atlético' },
+] as Teams[]);
+
+export { loginMock, userMock, errorLoginMock, userNotAuthMock, matchesMock, teamsMock };

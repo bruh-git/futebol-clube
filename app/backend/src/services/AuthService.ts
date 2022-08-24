@@ -22,4 +22,15 @@ export default class AuthService {
       throw error;
     }
   }
+
+  static validateMatches(token: string): jwt.JwtPayload {
+    try {
+      const verify = jwt.verify(token, secret);
+      return verify as jwt.JwtPayload;
+    } catch (e) {
+      const error = new Error('Token must be a valid token');
+      error.name = 'UnauthorizedError';
+      throw error;
+    }
+  }
 }

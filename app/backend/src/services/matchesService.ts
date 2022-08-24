@@ -1,5 +1,6 @@
 import Teams from '../database/models/TeamModel';
 import Matches from '../database/models/MatcheModel';
+import IMatch from '../interfaces/IMatch';
 
 export default class TeamsService {
   public list = async () => {
@@ -24,5 +25,17 @@ export default class TeamsService {
     );
 
     return matches;
+  };
+
+  public create = async (partida: IMatch) => {
+    const matches = await Matches.create(partida);
+    return matches;
+  };
+
+  public finish = async (id: number) => {
+    await Matches.update(
+      { inProgress: false },
+      { where: { id } },
+    );
   };
 }
