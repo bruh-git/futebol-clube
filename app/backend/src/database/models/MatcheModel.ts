@@ -64,12 +64,12 @@ Matches.belongsTo(Teams, {
 Teams.hasMany(Matches, {
   foreignKey: 'home_team',
   sourceKey: 'id',
-  as: 'homeMatches',
+  as: 'homeTeam',
 });
 Teams.hasMany(Matches, {
   foreignKey: 'away_team',
   sourceKey: 'id',
-  as: 'awayMatches',
+  as: 'awayTeam',
 });
 
 export default Matches;
