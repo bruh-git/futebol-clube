@@ -45,6 +45,141 @@ const matchesMock = [
   },
 ] as IMatch[];
 
+const matchesTeamsMock = [
+  {
+    id: 7,
+    homeTeam: 5,
+    homeTeamGoals: 10,
+    awayTeam: 8,
+    awayTeamGoals: 1,
+    inProgress: false,
+    teamHome: {
+      teamName: 'Cruzeiro',
+    },
+    teamAway: {
+      teamName: 'Atletico',
+    },
+  },
+  {
+    id: 41,
+    homeTeam: 16,
+    homeTeamGoals: 2,
+    awayTeam: 9,
+    awayTeamGoals: 0,
+    inProgress: true,
+    teamHome: {
+      teamName: 'America',
+    },
+    teamAway: {
+      teamName: 'Flemengo',
+    },
+  },
+] as unknown as IMatch[];
+
+const matchesTeamsMockFalse = [
+  {
+    id: 7,
+    homeTeam: 5,
+    homeTeamGoals: 10,
+    awayTeam: 8,
+    awayTeamGoals: 1,
+    inProgress: false,
+    teamHome: {
+      teamName: 'Cruzeiro',
+    },
+    teamAway: {
+      teamName: 'Atletico',
+    },
+  },
+  {
+    id: 41,
+    homeTeam: 16,
+    homeTeamGoals: 2,
+    awayTeam: 9,
+    awayTeamGoals: 0,
+    inProgress: false,
+    teamHome: {
+      teamName: 'America',
+    },
+    teamAway: {
+      teamName: 'Flemengo',
+    },
+  },
+] as unknown as IMatch[];
+
+const matchesTeamsMockTrue = [
+  {
+    id: 7,
+    homeTeam: 5,
+    homeTeamGoals: 10,
+    awayTeam: 8,
+    awayTeamGoals: 1,
+    inProgress: true,
+    teamHome: {
+      teamName: 'Cruzeiro',
+    },
+    teamAway: {
+      teamName: 'Atletico',
+    },
+  },
+  {
+    id: 41,
+    homeTeam: 16,
+    homeTeamGoals: 2,
+    awayTeam: 9,
+    awayTeamGoals: 0,
+    inProgress: true,
+    teamHome: {
+      teamName: 'America',
+    },
+    teamAway: {
+      teamName: 'Flamengo',
+    },
+  },
+] as unknown as IMatch[];
+const mockCreationMatches = {
+  homeTeam: 3,
+  awayTeam: 2,
+  homeTeamGoals: 4,
+  awayTeamGoals: 1,
+};
+const mockCreate = {
+  id: 1,
+  homeTeam: 3,
+  awayTeam: 2,
+  homeTeamGoals: 4,
+  awayTeamGoals: 1,
+  inProgress: true,
+};
+const mockIdError = {
+  id: 9,
+  homeTeam: '',
+  awayTeam: '',
+  homeTeamGoals: 4,
+  awayTeamGoals: 1,
+  inProgress: true,
+};
+
+const mockCreationsError = {
+  homeTeam: 0,
+  awayTeam: 1,
+  homeTeamGoals: 4,
+  awayTeamGoals: 1,
+};
+const mockCreationMatchesError = {
+  homeTeam: 1,
+  awayTeam: 1,
+  homeTeamGoals: 4,
+  awayTeamGoals: 1,
+};
+const mockCreateError = {
+  id: 1,
+  homeTeam: 1,
+  awayTeam: 1,
+  homeTeamGoals: 4,
+  awayTeamGoals: 1,
+  inProgress: true,
+};
 const teamsMock = ([
   { id: 0, teamName: 'Cruzeiro' },
   { id: 1, teamName: 'Atlético' },
@@ -104,36 +239,10 @@ const leaderBoardHomeMock = [
   },
 ];
 
-const leaderBoardAwayMock = [
-  {
-    name: 'Palmeiras',
-    totalPoints: 6,
-    totalGames: 2,
-    totalVictories: 2,
-    totalDraws: 0,
-    totalLosses: 0,
-    goalsFavor: 7,
-    goalsOwn: 0,
-    goalsBalance: 7,
-    efficiency: '100.00',
-  },
-  {
-    name: 'Corinthians',
-    totalPoints: 6,
-    totalGames: 3,
-    totalVictories: 2,
-    totalDraws: 0,
-    totalLosses: 1,
-    goalsFavor: 6,
-    goalsOwn: 2,
-    goalsBalance: 4,
-    efficiency: '66.67',
-  },
-];
-
 export {
-  loginMock, userMock, errorLoginMock,
-  userNotAuthMock, matchesMock, teamsMock,
-  leaderBoardMock, leaderBoardHomeMock,
-  leaderBoardAwayMock,
+  loginMock, userMock, errorLoginMock, userNotAuthMock, matchesMock, teamsMock,
+  leaderBoardMock, leaderBoardHomeMock, mockCreationMatches,
+  mockCreate, matchesTeamsMock, matchesTeamsMockFalse,
+  matchesTeamsMockTrue, mockCreationMatchesError, mockCreateError, mockIdError,
+  mockCreationsError,
 };

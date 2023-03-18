@@ -4,8 +4,9 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
+import { teamsMock, matchesTeamsMockFalse } from '../mocks/mocks';
+import MatcheModel from '../database/models/MatcheModel';
 import TeamsModel from '../database/models/TeamModel';
-import { teamsMock } from '../mocks/mocks';
 
 
 chai.use(chaiHttp);
@@ -19,36 +20,34 @@ describe('Leaderboard', () => {
   })
 
   it('retorna erro quando não encontra leaderboard', async () => {
-    sinon
-      .stub(TeamsModel, 'findAll')
-      .resolves(teamsMock);
+    sinon.stub(MatcheModel, 'findAll').resolves(matchesTeamsMockFalse as unknown as MatcheModel[]);
+    sinon.stub(TeamsModel, 'findAll').resolves(teamsMock as TeamsModel[]);
+
     const response = await chai
     .request(app)
-      .get('/leaderboard')
+      .get('/leaderboard');
 
-    expect(response.status).to.equal(500);
+      expect(response.status).to.be.eq(500);
   });
 
-  it('retorna erro quando não encontraleaderboard home', async () => {
-    sinon
-      .stub(TeamsModel, 'findAll')
-      .resolves(teamsMock);
+  it('retorna erro quando não encontra leaderboard home', async () => {
+    sinon.stub(MatcheModel, 'findAll').resolves(matchesTeamsMockFalse as unknown as MatcheModel[]);
+    sinon.stub(TeamsModel, 'findAll').resolves(teamsMock as TeamsModel[]);
     const response = await chai
     .request(app)
-      .get('/leaderboard/home')
+      .get('/leaderboard/home');
 
-    expect(response.status).to.equal(500);
+      expect(response.status).to.be.eq(500);
   });
 
   it('retorna erro quando não encontra leaderboard away', async () => {
-    sinon
-      .stub(TeamsModel, 'findAll')
-      .resolves(teamsMock);
+    sinon.stub(MatcheModel, 'findAll').resolves(matchesTeamsMockFalse as unknown as MatcheModel[]);
+    sinon.stub(TeamsModel, 'findAll').resolves(teamsMock as TeamsModel[]);
     const response = await chai
     .request(app)
-      .get('/leaderboard/away')
+      .get('/leaderboard/away');
 
-    expect(response.status).to.equal(500);
+      expect(response.status).to.be.eq(500);
   });
 
 });
